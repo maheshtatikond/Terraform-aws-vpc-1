@@ -8,12 +8,14 @@ variable "cidr_block" {
 variable "environment" {
     description = "The environment for the VPC"
     type        = string
+    default = "dev"
     
   
 }
 variable "project" {
     description = "name of the project for the VPC"
     type        = string
+    default = "roboshop"
     
   
 }
