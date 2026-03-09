@@ -1,26 +1,21 @@
-variable "cidr_block" {
-    description = "The CIDR block for the VPC"
-    type        = string
-    default     = "10.0.0.0/16"
-  
-}   
+variable "project" {
+    type = string
+}
 
 variable "environment" {
-    description = "The environment for the VPC"
-    type        = string
+    type = string
+    validation {
+        condition     = contains(["dev", "qa", "uat", "prod"], var.environment)
+        error_message = "Environments should be one of dev, qa, uat or prod"
+    }
+}
 
-    
-  
+variable "vpc_cidr" {
+    type = string
+    default = "10.0.0.0/16"
 }
-variable "project" {
-    description = "name of the project for the VPC"
-    type        = string
-  
-    
-  
-}
+
 variable "vpc_tags" {
-  description = "name of the tags"
-  type = map
-  default = {}
+    type = map
+    default = {}
 }
